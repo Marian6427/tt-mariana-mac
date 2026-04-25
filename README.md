@@ -1,45 +1,36 @@
-![](../../workflows/gds/badge.svg) ![](../../workflows/docs/badge.svg) ![](../../workflows/test/badge.svg) ![](../../workflows/fpga/badge.svg)
+# tt_um_mariana_mac — INT8 MAC Unit for TinyTapeout
 
-# ⚠️ This template is old and outdated ⚠️
+[![test](https://github.com/Marian6427/tt-mariana-mac/actions/workflows/test.yaml/badge.svg)](https://github.com/Marian6427/tt-mariana-mac/actions/workflows/test.yaml)
+[![gds](https://github.com/Marian6427/tt-mariana-mac/actions/workflows/gds.yaml/badge.svg)](https://github.com/Marian6427/tt-mariana-mac/actions/workflows/gds.yaml)
 
-Please use **[ttsky-verilog-template](https://github.com/TinyTapeout/ttsky-verilog-template)** for new projects.
+A signed 8-bit Multiply-Accumulate (MAC) unit for AI inference, designed for
+the [TinyTapeout](https://tinytapeout.com) shuttle program.
 
-# Tiny Tapeout Verilog Project Template
+## What it does
 
-- [Read the documentation for project](docs/info.md)
+`accumulator += weight × activation` using INT8 signed arithmetic — the
+fundamental building block of every neural network.
 
-## What is Tiny Tapeout?
+## Submission target
 
-Tiny Tapeout is an educational project that aims to make it easier and cheaper than ever to get your digital and analog designs manufactured on a real chip.
+- **Shuttle:** TTSKY26a (SkyWater 130nm)
+- **Tile size:** 1×1 (947 gates synthesized)
+- **Clock:** 50 MHz
+- **Top module:** `tt_um_mariana_mac`
 
-To learn more and get started, visit https://tinytapeout.com.
+## Quick test
 
-## Set up your Verilog project
+```bash
+cd test
+make
+```
 
-1. Add your Verilog files to the `src` folder.
-2. Edit the [info.yaml](info.yaml) and update information about your project, paying special attention to the `source_files` and `top_module` properties. If you are upgrading an existing Tiny Tapeout project, check out our [online info.yaml migration tool](https://tinytapeout.github.io/tt-yaml-upgrade-tool/).
-3. Edit [docs/info.md](docs/info.md) and add a description of your project.
-4. Adapt the testbench to your design. See [test/README.md](test/README.md) for more information.
+Should output: `TESTS=6 PASS=6 FAIL=0`
 
-The GitHub action will automatically build the ASIC files using [OpenLane](https://www.zerotoasiccourse.com/terminology/openlane/).
+## Author
 
-## Enable GitHub actions to build the results page
+Marian Topor (TG Baumont s.r.o., Slovakia)
 
-- [Enabling GitHub Pages](https://tinytapeout.com/faq/#my-github-action-is-failing-on-the-pages-part)
+## License
 
-## Resources
-
-- [FAQ](https://tinytapeout.com/faq/)
-- [Digital design lessons](https://tinytapeout.com/digital_design/)
-- [Learn how semiconductors work](https://tinytapeout.com/siliwiz/)
-- [Join the community](https://tinytapeout.com/discord)
-- [Build your design locally](https://www.tinytapeout.com/guides/local-hardening/)
-
-## What next?
-
-- [Submit your design to the next shuttle](https://app.tinytapeout.com/).
-- Edit [this README](README.md) and explain your design, how it works, and how to test it.
-- Share your project on your social network of choice:
-  - LinkedIn [#tinytapeout](https://www.linkedin.com/search/results/content/?keywords=%23tinytapeout) [@TinyTapeout](https://www.linkedin.com/company/100708654/)
-  - Mastodon [#tinytapeout](https://chaos.social/tags/tinytapeout) [@matthewvenn](https://chaos.social/@matthewvenn)
-  - X (formerly Twitter) [#tinytapeout](https://twitter.com/hashtag/tinytapeout) [@tinytapeout](https://twitter.com/tinytapeout)
+Apache 2.0 — see [LICENSE](LICENSE)
